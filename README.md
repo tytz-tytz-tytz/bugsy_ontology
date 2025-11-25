@@ -74,47 +74,29 @@ BUGSY_ONTOLOGY/
 ## 3. Пайплайн обработки
 
 1. **Парсинг PDF**  
-   Скрипты  
-   [`parse_pdf.py`](src/parse_pdf.py),  
-   [`chunker.py`](src/chunker.py) и  
-   [`figure_extractor.py`](src/figure_extractor.py)  
-   извлекают текстовые фрагменты и метаданные изображений.  
-   Результаты:  
-   [`chunks.csv`](output/chunks.csv),  
-   [`figures.csv`](output/figures.csv).
+   Скрипты [`parse_pdf.py`](src/parse_pdf.py), [`chunker.py`](src/chunker.py) и [`figure_extractor.py`](src/figure_extractor.py) извлекают текстовые фрагменты и метаданные изображений.  
+   Результаты: [`chunks.csv`](output/chunks.csv),[`figures.csv`](output/figures.csv).
 
 2. **Восстановление структуры разделов**  
    [`section_hierarchy.py`](src/section_hierarchy.py) определяет уровни заголовков по размеру шрифта и формирует иерархию разделов.  
-   Результаты:  
-   [`nodes_sections.csv`](output/nodes_sections.csv),  
-   [`edges_sections.csv`](output/edges_sections.csv).
+   Результаты: [`nodes_sections.csv`](output/nodes_sections.csv), [`edges_sections.csv`](output/edges_sections.csv).
 
 3. **Обработка списков**  
    [`list_item_extractor.py`](src/list_item_extractor.py) выделяет элементы списков в отдельные узлы и формирует связи `HAS_ITEM`.  
-   Результаты:  
-   [`nodes_list_items.csv`](output/nodes_list_items.csv),  
-   [`edges_list_items.csv`](output/edges_list_items.csv).
+   Результаты: [`nodes_list_items.csv`](output/nodes_list_items.csv), [`edges_list_items.csv`](output/edges_list_items.csv).
 
 4. **Интеграция изображений**  
    [`figure_graph_builder.py`](src/figure_graph_builder.py) создаёт узлы Figure и связи `CAPTIONS` между подписью и изображением.  
-   Результаты:  
-   [`nodes_figures.csv`](output/nodes_figures.csv),  
-   [`edges_figures.csv`](output/edges_figures.csv).
+   Результаты: [`nodes_figures.csv`](output/nodes_figures.csv), [`edges_figures.csv`](output/edges_figures.csv).
 
 5. **Обработка гиперссылок**  
    [`hyperlink_extractor.py`](src/hyperlink_extractor.py) создаёт узлы ссылочного типа (ReferenceTarget/Url) и связи `LINKS_TO`.  
-   Результаты:  
-   [`nodes_hyperlinks.csv`](output/nodes_hyperlinks.csv),  
-   [`edges_hyperlinks.csv`](output/edges_hyperlinks.csv).
+   Результаты: [`nodes_hyperlinks.csv`](output/nodes_hyperlinks.csv), [`edges_hyperlinks.csv`](output/edges_hyperlinks.csv).
 
 6. **Сборка итогового графа**  
    [`graph_builder.py`](src/graph_builder.py) объединяет все сущности и связи в совокупный граф.  
-   Результаты:  
-   [`all_nodes.csv`](output/all_nodes.csv),  
-   [`all_edges.csv`](output/all_edges.csv).
+   Результаты: [`all_nodes.csv`](output/all_nodes.csv), [`all_edges.csv`](output/all_edges.csv).
 
 7. **Экспорт для OntologyRAG**  
    [`graphrag_export.py`](src/graphrag_export.py) преобразует итоговый граф в формат JSON, совместимый с OntologyRAG.  
-   Результаты:  
-   [`graphrag_nodes.json`](output/graphrag_nodes.json),  
-   [`graphrag_edges.json`](output/graphrag_edges.json).
+   Результаты: [`graphrag_nodes.json`](output/graphrag_nodes.json), [`graphrag_edges.json`](output/graphrag_edges.json).
